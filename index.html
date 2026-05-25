@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>危险品国际运输 · 7天速成培训</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --success-light: #f0fdf4;
+            --warning: #ea580c;
+            --warning-light: #fff7ed;
+            --danger: #dc2626;
+            --danger-light: #fef2f2;
+            --sidebar-width: 260px;
+            --header-height: 64px;
+            --radius: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.04);
+            --font-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--header-height) + 20px);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Header ───────────────────── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--header-height);
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .header .logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--primary);
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+        .header .logo span {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.85rem;
+            margin-left: 6px;
+        }
+        .header .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-left: auto;
+        }
+        .header .mobile-menu-btn:hover {
+            background: var(--bg);
+        }
+        @media (max-width: 860px) {
+            .header .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* ── Layout ──────────────────── */
+        .app-layout {
+            display: flex;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        /* ── Sidebar ─────────────────── */
+        .sidebar {
+            width: var(--sidebar-width);
+            flex-shrink: 0;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: var(--header-height);
+            height: calc(100vh - var(--header-height));
+            overflow-y: auto;
+            z-index: 50;
+            transition: transform 0.25s ease;
+        }
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 0 12px;
+        }
+        .sidebar .nav-section {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            padding: 16px 8px 6px 8px;
+            font-weight: 600;
+        }
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-secondary);
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            transition: all 0.15s;
+            border-left: 3px solid transparent;
+            line-height: 1.4;
+        }
+        .sidebar a:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+        .sidebar a.active {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+            border-left-color: var(--primary);
+        }
+        @media (max-width: 860px) {
+            .sidebar {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                transform: translateX(-100%);
+                z-index: 90;
+                box-shadow: var(--shadow-md);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                top: var(--header-height);
+                background: rgba(0, 0, 0, 0.35);
+                z-index: 85;
+            }
+            .sidebar-overlay.show {
+                display: block;
+            }
+        }
+
+        /* ── Main Content ───────────── */
+        .main-content {
+            flex: 1;
+            padding: 32px 36px 60px;
+            max-width: 960px;
+            width: 100%;
+        }
+        @media (max-width: 860px) {
+            .main-content {
+                padding: 20px 16px 48px;
+            }
+        }
+
+        /* ── Hero ───────────────────── */
+        .hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1a3252 40%, #1d4ed8 100%);
+            color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: -40px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+        .hero .badge-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .badge {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        @media (max-width: 600px) {
+            .hero {
+                padding: 24px 20px;
+            }
+            .hero h1 {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* ── Overview Cards ────────── */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .overview-card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 20px 22px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .overview-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .overview-card .card-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .overview-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+        .overview-card .card-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* ── Section ────────────────── */
+        .lesson-section {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            scroll-margin-top: 80px;
+        }
+        .lesson-section .lesson-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+        .lesson-section .lesson-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .lesson-section h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .lesson-section .lesson-goal {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            padding-left: 54px;
+        }
+        .lesson-section h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 18px 0 6px;
+            color: var(--text);
+        }
+        .lesson-section p {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .lesson-section ul,
+        .lesson-section ol {
+            margin: 6px 0 12px 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .lesson-section li {
+            margin-bottom: 4px;
+        }
+
+        /* ── Tables ─────────────────── */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 12px 0 18px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+        table th {
+            background: #f1f5f9;
+            font-weight: 600;
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+            color: var(--text);
+        }
+        table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            color: var(--text-secondary);
+        }
+        table tr:last-child td {
+            border-bottom: none;
+        }
+        table tr:hover td {
+            background: #fafbfc;
+        }
+
+        /* ── Callouts ──────────────── */
+        .callout {
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            margin: 14px 0;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            border-left: 4px solid;
+        }
+        .callout.info {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: #1e40af;
+        }
+        .callout.success {
+            background: var(--success-light);
+            border-color: var(--success);
+            color: #166534;
+        }
+        .callout.warning {
+            background: var(--warning-light);
+            border-color: var(--warning);
+            color: #9a3412;
+        }
+        .callout.danger {
+            background: var(--danger-light);
+            border-color: var(--danger);
+            color: #991b1b;
+        }
+        .callout strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* ── Code / Mono blocks ────── */
+        .mono-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            overflow-x: auto;
+            margin: 8px 0 14px;
+            line-height: 1.6;
+        }
+        .mono-block .highlight {
+            color: #fbbf24;
+        }
+
+        /* ── Tags ──────────────────── */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin: 2px 3px;
+        }
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .tag.red {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .tag.orange {
+            background: #ffedd5;
+            color: #9a3412;
+        }
+        .tag.blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .tag.gray {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        /* ── Footer ────────────────── */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+
+        /* ── Print ─────────────────── */
+        @media print {
+            .sidebar,
+            .header,
+            .sidebar-overlay {
+                display: none !important;
+            }
+            .main-content {
+                padding: 0;
+                max-width: 100%;
+            }
+            .lesson-section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            body {
+                background: #fff;
+            }
+        }
+
+        /* ── Scrollbar ─────────────── */
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Header ────────────────────── -->
+    <header class="header">
+        <div class="logo">🚢 DG Training <span>| 危险品国际运输7天速成</span></div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">☰</button>
+    </header>
+
+    <!-- ── Sidebar Overlay (mobile) ── -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ── Layout ───────────────────── -->
+    <div class="app-layout">
+
+        <!-- ── Sidebar ───────────────── -->
+        <aside class="sidebar" id="sidebar">
+            <nav>
+                <div class="nav-section">📋 课程总览</div>
+                <a href="#overview">课程概览卡片</a>
+                <a href="#lesson1">第1课 · 法律框架与9大分类</a>
+                <a href="#lesson2">第2课 · BESS 储能电池</a>
+                <a href="#lesson3">第3课 · ISO Tank 罐箱</a>
+                <a href="#lesson4">第4课 · 单证 DNA</a>
+                <a href="#lesson5">第5课 · 订舱流程与时间节点</a>
+                <a href="#lesson6">第6课 · 包装标记与积载隔离</a>
+                <a href="#lesson7">第7课 · 应急响应与典型案例</a>
+                <div class="nav-section">🔗 快速参考</div>
+                <a href="#quickref-pg">包装类 PG 速查</a>
+                <a href="#quickref-pin">拼箱/禁拼速查</a>
+            </nav>
+        </aside>
+
+        <!-- ── Main Content ──────────── -->
+        <main class="main-content">
+
+            <!-- Hero -->
+            <section class="hero">
+                <h1>危险品国际运输 · 7天速成培训</h1>
+                <p>面向危险品货代新人及操作团队，涵盖 BESS 储能电池 &amp; ISO Tank 罐箱专项，从法规到订舱全流程覆盖。</p>
+                <div class="badge-row">
+                    <span class="badge">📘 IMDG Code 42-24</span>
+                    <span class="badge">🔋 BESS 专项</span>
+                    <span class="badge">🛢️ ISO Tank</span>
+                    <span class="badge">📋 单证实操</span>
+                </div>
+            </section>
+
+            <!-- Overview Cards -->
+            <div class="overview-grid" id="overview">
+                <a href="#lesson1" class="overview-card">
+                    <div class="card-num">01</div>
+                    <h3>法律框架与9大分类</h3>
+                    <div class="card-sub">IMDG / IATA DGR · 九大类速记 · PG 初识</div>
+                </a>
+                <a href="#lesson2" class="overview-card">
+                    <div class="card-num">02</div>
+                    <h3>BESS 储能电池专项</h3>
+                    <div class="card-sub">UN3536 / UN3480 · UN38.3 · 热失控防护</div>
+                </a>
+                <a href="#lesson3" class="overview-card">
+                    <div class="card-num">03</div>
+                    <h3>ISO Tank 罐箱专项</h3>
+                    <div class="card-sub">T 证书 · 清洁证书 · 充装率 · 加热管路</div>
+                </a>
+                <a href="#lesson4" class="overview-card">
+                    <div class="card-num">04</div>
+                    <h3>单证 DNA</h3>
+                    <div class="card-sub">MSDS · 危包证 · DGD · 装箱证明书</div>
+                </a>
+                <a href="#lesson5" class="overview-card">
+                    <div class="card-num">05</div>
+                    <h3>订舱与时间节点</h3>
+                    <div class="card-sub">T-10 到 T-0 全流程 · 船边直装 · 截危申报</div>
+                </a>
+                <a href="#lesson6" class="overview-card">
+                    <div class="card-num">06</div>
+                    <h3>包装标记与积载隔离</h3>
+                    <div class="card-sub">UN 编码解读 · 标签粘贴 · 隔离表实战</div>
+                </a>
+                <a href="#lesson7" class="overview-card">
+                    <div class="card-num">07</div>
+                    <h3>应急响应与典型案例</h3>
+                    <div class="card-sub">BESS 热失控 · ISO 泄漏 · 终极测试</div>
+                </a>
+            </div>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- LESSON 1 -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="lesson1">
+                <div class="lesson-header">
+                    <span class="lesson-num">1</span>
+                    <h2>危险品国际运输法律框架与9大分类</h2>
+                </div>
+                <div class="lesson-goal">🎯 目标：认识国际法规体系，快速识别货物属于9大类中的哪一类，记住"1-2-5-7 禁拼"底层规则。</div>
+
+                <h3>国际核心法规二巨头</h3>
+                <ul>
+                    <li><strong>海运：</strong>《国际海运危险货物规则》IMDG Code（2026年已强制实施 42‑24 版）</li>
+                    <li><strong>空运：</strong>IATA《危险品规则》DGR</li>
+                    <li><strong>国内配套：</strong>《危险化学品安全管理条例》《船舶载运危险货物安全监督管理规定》等</li>
+                </ul>
+
+                <h3>9大类速记口诀与关键点</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>类别</th><th>名称</th><th>拼箱</th><th>典型 UN 示例</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>爆炸品</td><td><span class="tag red">⛔ 禁拼</span></td><td>UN0333 烟花</td></tr>
+                            <tr><td>2</td><td>气体</td><td><span class="tag red">⛔ 禁拼</span></td><td>UN1072 氧气 2.2 / UN1017 氯气 2.3</td></tr>
+                            <tr><td>3</td><td>易燃液体</td><td><span class="tag green">✅ 闪点合格可拼</span></td><td>UN1203 汽油、UN1170 乙醇</td></tr>
+                            <tr><td>4</td><td>易燃固体/自燃/遇水</td><td><span class="tag orange">⚠️ 4.1部分可，4.2/4.3禁拼</span></td><td>UN1338 红磷 4.1、UN1428 钠 4.3</td></tr>
+                            <tr><td>5</td><td>氧化剂/有机过氧化物</td><td><span class="tag red">⛔ 禁拼</span></td><td>UN1490 高锰酸钾 5.1</td></tr>
+                            <tr><td>6</td><td>毒性/感染性</td><td><span class="tag orange">⚠️ 6.1可拼(剧毒除外) 6.2禁拼</span></td><td>UN2811 有毒固体</td></tr>
+                            <tr><td>7</td><td>放射性</td><td><span class="tag red">⛔ 禁拼</span></td><td>UN3332</td></tr>
+                            <tr><td>8</td><td>腐蚀品</td><td><span class="tag green">✅ 可拼，酸碱分箱</span></td><td>UN1830 硫酸、UN1824 烧碱</td></tr>
+                            <tr><td>9</td><td>杂项（含锂电池等）</td><td><span class="tag green">✅ 最友好</span></td><td>UN3480 锂离子电池、UN3536 储能装置</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>包装类 PG 初识</h3>
+                <ul>
+                    <li><strong>PG Ⅰ</strong>（高危险）→ 包装最强，跌落测试 1.8 m</li>
+                    <li><strong>PG Ⅱ</strong>（中等）→ 跌落测试 1.2 m</li>
+                    <li><strong>PG Ⅲ</strong>（低危）→ 跌落测试 0.6 m</li>
+                    <li>爆炸品、气体、放射性等不按此分，另行规定</li>
+                </ul>
+
+                <div class="callout info"><strong>💡 今日操作贴士</strong>碰到新货先问：<strong>UN 编号是什么？第几类？PG 多少？</strong>把 "1‑2‑5‑7 禁拼，4 类看 UN，3‑8‑9 可拼有讲究" 设为办公区标语。</div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- LESSON 2 -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="lesson2">
+                <div class="lesson-header"><span class="lesson-num">2</span><h2>BESS 储能电池运输专项</h2></div>
+                <div class="lesson-goal">🎯 目标：掌握 BESS（集装箱式储能电池系统）海运归类逻辑，会判断 UN3480 / UN3536 / 非危。</div>
+
+                <h3>BESS 是什么？</h3>
+                <p>大型柜式/箱式储能电池系统，内置锂离子电池模组，常见外观为 20 尺/40 尺 ISO 标准箱体，可直接吊装。</p>
+
+                <h3>如何确定 UN 编号？</h3>
+                <ul>
+                    <li>电池单独包装运输 → <strong>UN3480</strong>（锂离子电池）或 UN3090（锂金属）</li>
+                    <li>电池装在设备中 → <strong>UN3481</strong></li>
+                    <li>储能柜整体作为"安装在货物运输单元中的锂电池" → <strong>UN3536</strong>（IMDG 40‑20 版新增）</li>
+                    <li>若 MSDS / 鉴定报告判定为非限制性/例外 → 可能按非危品运输，但需严格文件支持</li>
+                </ul>
+
+                <h3>必需检测与证件</h3>
+                <ul>
+                    <li>📋 <strong>UN38.3 测试报告</strong>（电池安全测试，必须提供）</li>
+                    <li>📋 <strong>危险特性鉴定报告</strong>（上海港等要求）</li>
+                    <li>📋 <strong>MSDS</strong> 第 14 项必须明确 UN 号、类别、PG</li>
+                    <li>若为 UN3536，装箱时需提供 <strong>集装箱/车辆批准证书</strong>（SP 389）</li>
+                </ul>
+
+                <h3>包装与集装箱要求</h3>
+                <ul>
+                    <li>电池模组必须固定，防碰撞、防短路、防振动</li>
+                    <li>柜内要有<strong>热失控防护设计</strong>（灭火装置、排烟等）</li>
+                    <li>集装箱外贴 <strong>9 类标签 + 锂电池防火标识</strong>，必要时加贴方向箭头</li>
+                </ul>
+
+                <h3>订舱 &amp; 港口特别要求</h3>
+                <ul>
+                    <li>多数船公司要求 <strong>提前 10 天订舱</strong>，提供整套资料预审</li>
+                    <li>储能柜通常以<strong>整柜出运</strong>，不走拼箱</li>
+                    <li>部分码头要求 <strong>船边直装</strong>，不接受港区长时间暂存</li>
+                    <li>温度敏感型可能需要<strong>冷链/温控集装箱</strong>（控温 5‑40°C）</li>
+                </ul>
+
+                <div class="callout danger"><strong>🚫 BESS 操作避坑清单</strong>切勿只看货物名称（如"储能柜"）就归非危，务必核对 MSDS 和电池参数。<br>不要遗漏 <strong>UN38.3 报告</strong>——这是船公司拒收的头号原因。<br>柜体如使用制冷剂（如 UN1845 干冰），须另外申报并贴温控标签。</div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- LESSON 3 -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="lesson3">
+                <div class="lesson-header"><span class="lesson-num">3</span><h2>ISO Tank 罐式集装箱运输专项</h2></div>
+                <div class="lesson-goal">🎯 目标：了解 ISO Tank 适用货物，掌握罐箱批准文件、检验周期及充装规则。</div>
+
+                <h3>ISO Tank 定义与规格</h3>
+                <p>可移动罐柜，箱体框架按 ISO 标准，专门用于运输液体、液化气体或粉末危险品。常见 T11、T14、T50 等罐型，不同 UN 适用不同罐型。</p>
+
+                <h3>适合哪些危险品？</h3>
+                <ul>
+                    <li>第 3 类：乙醇、甲醇、乙酸乙酯等</li>
+                    <li>第 8 类：硫酸、液碱、磷酸</li>
+                    <li>第 6.1 类：部分有毒液体</li>
+                    <li>第 2 类：少数液化气体（需特殊罐体）</li>
+                    <li>油性货物、食品级液体也大量使用 ISO Tank</li>
+                </ul>
+
+                <h3>罐箱必须持有的"身份证"</h3>
+                <ul>
+                    <li><strong>CSC 安全牌照</strong>（集装箱安全）</li>
+                    <li><strong>IMDG 可移动罐柜证书（T 证书）</strong></li>
+                    <li><strong>最近 2.5/5 年定期检验报告</strong>（按罐型定检周期）</li>
+                    <li><strong>清洁证书</strong>（上票货卸完后由清洁站出具）</li>
+                </ul>
+
+                <h3>充装与运输禁忌</h3>
+                <ul>
+                    <li>充装率：通常不超过罐容的 <strong>97%</strong>，某些物质需留出足够蒸汽空间</li>
+                    <li><strong>加热管路：</strong>硫磺、沥青等需伴热的货物，必须使用带加热盘管的罐箱，标明加热温度上限</li>
+                    <li><strong>底部卸货阀：</strong>运输第 3 类易燃液体时须配上安全封闭装置、防尘盖</li>
+                </ul>
+
+                <div class="callout warning"><strong>🚫 罐箱实操红线</strong>罐箱检验过期 → 船公司 100% 拒接。<br>强酸与强碱罐箱需专罐专用，混用极易引发腐蚀事故。<br>海运出口前务必确认目的港能否卸罐箱（有无罐箱堆场和清洗站）。</div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- LESSON 4 -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="lesson4">
+                <div class="lesson-header"><span class="lesson-num">4</span><h2>危险品单证 DNA</h2></div>
+                <div class="lesson-goal">🎯 目标：搞清单证之间的逻辑关系，会审 MSDS 第 14 项，知道危包证数据怎么计算。</div>
+
+                <h3>单证清单及审核心法</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>单证名称</th><th>必须包含 / 核对什么</th><th>提供方</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>MSDS</strong></td><td>第 14 项：UN 号、正确运输名称、危险类别、PG、海洋污染物标记</td><td>生产商/供应商</td></tr>
+                            <tr><td><strong>危险特性分类鉴定报告</strong></td><td>判定实际危险类别、UN、是否危货</td><td>第三方鉴定机构</td></tr>
+                            <tr><td><strong>危包证</strong></td><td>包装容器 UN 编码、PG、<strong>件数≥实际装货件数</strong>、有效期</td><td>包装容器检验机构</td></tr>
+                            <tr><td><strong>货物运输条件鉴定书（海运）</strong></td><td>与 MSDS 一致的运输信息</td><td>鉴定机构</td></tr>
+                            <tr><td><strong>危险货物安全适运申报单（DGD）</strong></td><td>申报人、UN 信息、包装描述、装载操作等</td><td>货代/发货人填写</td></tr>
+                            <tr><td><strong>集装箱装箱证明书</strong></td><td>装箱员出具，证明箱内积载合规</td><td>装箱现场检查员</td></tr>
+                            <tr><td><strong>特殊单证</strong></td><td>UN38.3 报告（锂电池）、清洁证书（罐箱）、放射性剂量证书（7 类）等</td><td>依货物定</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout danger"><strong>🚫 单证常见致命错误</strong>危包证上的包装件数 < 实际出货件数 → 海关不放行。<br>MSDS 第 14 项空白或写"无危险"但实际是危险品 → 订舱直接退。<br>DGD 与 MSDS 上的 UN 号、类别不一致 → 海事、船公司双退。</div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- LESSON 5 -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="lesson5">
+                <div class="lesson-header"><span class="lesson-num">5</span><h2>订舱流程、船公司/港口要求与时间节点</h2></div>
+                <div class="lesson-goal">🎯 目标：画出从接单到船开的标准时间线，熟悉截关和危申报截止时间。</div>
+
+                <h3>全套操作时间线（以上海港海运出口为例）</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>节点</th><th>距船开（约）</th><th>行动</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>T-10 天</td><td>10 个工作日前</td><td>订舱，提交 MSDS、危包证、鉴定报告预审（BESS/ISO Tank 需更早）</td></tr>
+                            <tr><td>T-7 天</td><td>接到船公司预配</td><td>确认船名航次，拿到预配回执</td></tr>
+                            <tr><td>T-5~6 天</td><td>一周内</td><td>向海事局提交<strong>危险货物安全适运申报</strong>（截危申报通常在船开前 3‑5 天）</td></tr>
+                            <tr><td>T-3 天</td><td>截港前</td><td>装箱、拍照、取得<strong>集装箱装箱证明书</strong>，提交 VGM</td></tr>
+                            <tr><td>T-2 天</td><td>截关日前</td><td>完成报关、海关放行，拿到电子放关场站收据</td></tr>
+                            <tr><td>T-1 天</td><td>船开前一日</td><td>完成<strong>船边直装</strong>预约（适用于 1、2、5 类及部分 4 类、储能柜等）</td></tr>
+                            <tr><td>T-0</td><td>船开</td><td>装载后签发提单样稿</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>港口直装操作规范</h3>
+                <ul>
+                    <li>1 类、2 类、5 类 <strong>必定直装</strong>；BESS 柜、部分 4.3 类也常要求直装</li>
+                    <li>直装意味着货物不入港区堆场，由监管车从外仓库直接送至船边</li>
+                    <li>需提前 <strong>72 小时</strong>向码头申报，提供柜号、品名 UN、直装预约单</li>
+                </ul>
+
+                <div class="callout info"><strong>💡 拼箱 vs 整柜订舱差异</strong>拼箱危险品：提前 7‑10 天订舱，需与拼箱公司确认隔离方案。<br>整柜危险品：可直接向船东（MSK、CMA、COSCO 等）订舱，提早锁位。</div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- LESSON 6 -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="lesson6">
+                <div class="lesson-header"><span class="lesson-num">6</span><h2>包装、标记、标签与积载隔离</h2></div>
+                <div class="lesson-goal">🎯 目标：能核验包装标记，会用隔离表判断混装可行性，标签粘贴零差错。</div>
+
+                <h3>包装标记解读示例</h3>
+                <div class="mono-block">
+                    UN <span class="highlight">1A1</span>/<span class="highlight">X</span>1.2/300/<span class="highlight">23</span>/CN/C001234<br>
+                    <span style="color:#94a3b8;">1A1 = 闭口钢桶 | X = 通过Ⅰ/Ⅱ/Ⅲ类测试 | 1.2 = 密度 | 300 = 液压试验 kPa | 23 = 2023年生产 | CN = 中国授权</span>
+                </div>
+
+                <h3>标签粘贴标准</h3>
+                <ul>
+                    <li>集装箱门端+两侧贴危险货物标志，尺寸 ≥ 250 mm × 250 mm</li>
+                    <li>9 类锂电池（UN3480/UN3481）须加贴 <strong>锂电池防火标（鲤鱼旗）</strong></li>
+                    <li>3 类易燃液体贴 <strong>易燃液体标签（红色火焰）</strong></li>
+                </ul>
+
+                <h3>隔离表实战速记</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>货物类型</th><th>不可混合</th></tr></thead>
+                        <tbody>
+                            <tr><td>酸（8 类）</td><td>碱（8 类）、4.1 类易燃固体</td></tr>
+                            <tr><td>氧化剂（5.1）</td><td>易燃液体（3）、易燃固体（4.1）</td></tr>
+                            <tr><td>遇水易燃气体（4.3）</td><td>任何含水货物</td></tr>
+                            <tr><td>锂电池（9 类）</td><td>尽可能与易燃物隔离</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>通用原则：</strong>同集装箱内分托盘，用防渗漏托盘 + 缠绕膜物理隔离。</p>
+
+                <div class="callout warning"><strong>🚫 贴标坑点</strong>空运、海运标签大小不同，不可混用。<br>禁止覆盖、遮挡危险标签。<br>罐箱须在框架两侧均贴类别标签 + 联合国编号。</div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- LESSON 7 -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="lesson7">
+                <div class="lesson-header"><span class="lesson-num">7</span><h2>应急响应、典型案例与终极复习</h2></div>
+                <div class="lesson-goal">🎯 目标：遇到 BESS 热失控、ISO 泄漏知道谁做什么，通过事故案例理解安全逻辑，通过上岗测试。</div>
+
+                <h3>应急情景：BESS 储能柜热失控</h3>
+                <ul>
+                    <li>现象：烟雾、明火、温度骤升</li>
+                    <li>立即通知：码头消防/船长、货主、货代、保险公司</li>
+                    <li>紧急处理：隔离柜体、启动柜内消防装置（如无法接近则紧急淹没/浸水）</li>
+                    <li>报告要求：按《船载危险货物应急反应措施》填应急表，24 小时内报海事</li>
+                </ul>
+
+                <h3>应急情景：ISO Tank 阀门泄漏</h3>
+                <ul>
+                    <li>先判断泄漏物类别：酸/碱/易燃</li>
+                    <li>人员穿戴相应化学防护装备，禁止靠近火源（如有易燃蒸气）</li>
+                    <li>若在船上，按船舶应变部署表操作，关闭隔离阀，准备围堵材料</li>
+                    <li>保留现场清洁证书、罐箱检验报告以便后续调查</li>
+                </ul>
+
+                <h3>经典事故案例（全员讨论）</h3>
+                <div class="callout danger"><strong>🔥 某港储能柜起火案</strong>原因：未如实申报 UN3536，未做短路防护，高温下热失控。<br>损失：集装箱全损，码头停摆 3 日。</div>
+                <div class="callout danger"><strong>🛢️ ISO Tank 硫酸泄漏案</strong>原因：罐箱内胆腐蚀穿孔，检验逾期未检。<br>后果：严重环境损害，船东禁止该罐箱公司入系统。</div>
+
+                <h3>终极复习 + 上岗测试要点</h3>
+                <ul>
+                    <li>随机抽取 20 个 UN 编号要求说出类别、PG、拼箱可行性</li>
+                    <li>给出错误 MSDS 要求挑错</li>
+                    <li>模拟从接单到放行全流程推演（含 BESS 和 ISO Tank 订舱）</li>
+                    <li>通过后方可独立操作危险品订舱</li>
+                </ul>
+            </section>
+
+            <!-- ═══════════════════════════════════════════ -->
+            <!-- QUICK REFERENCE -->
+            <!-- ═══════════════════════════════════════════ -->
+            <section class="lesson-section" id="quickref-pg">
+                <div class="lesson-header"><span class="lesson-num" style="background:#64748b;">📋</span><h2>包装类 PG 快速判定总表</h2></div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>包装类</th><th>危险程度</th><th>包装强度要求</th><th>跌落测试高度</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>PG Ⅰ</strong></td><td>高度危险性</td><td>要求最高</td><td>1.8 米</td></tr>
+                            <tr><td><strong>PG Ⅱ</strong></td><td>中等危险性</td><td>要求较高</td><td>1.2 米</td></tr>
+                            <tr><td><strong>PG Ⅲ</strong></td><td>轻度危险性</td><td>要求一般</td><td>0.6 米</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size:0.85rem;color:var(--text-muted);">除第1类、第2类、第7类、5.2项、6.2项和4.1项自反应物质外，其余危险货物按此划分。</p>
+            </section>
+
+            <section class="lesson-section" id="quickref-pin">
+                <div class="lesson-header"><span class="lesson-num" style="background:#64748b;">🚢</span><h2>拼箱 vs 整柜速查</h2></div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>类别</th><th>拼箱</th><th>说明</th></tr></thead>
+                        <tbody>
+                            <tr><td>第1类（爆炸品）</td><td>⛔ 禁拼</td><td>整柜 + 船边直装</td></tr>
+                            <tr><td>第2类（气体）</td><td>⛔ 禁拼</td><td>整柜 + 船边直装</td></tr>
+                            <tr><td>第3类（易燃液体）</td><td>✅ 可拼</td><td>闪点达标可拼，主流品类</td></tr>
+                            <tr><td>第4类</td><td>⚠️ 部分可拼</td><td>4.1 部分 UN 可拼（单票审核），4.2/4.3 多数禁拼</td></tr>
+                            <tr><td>第5类</td><td>⛔ 禁拼</td><td>整柜 + 船边直装</td></tr>
+                            <tr><td>第6类</td><td>⚠️ 6.1可拼 6.2禁拼</td><td>6.1 类剧毒禁拼</td></tr>
+                            <tr><td>第7类</td><td>⛔ 禁拼</td><td>专项审批</td></tr>
+                            <tr><td>第8类（腐蚀品）</td><td>✅ 可拼</td><td>酸碱分装，不能同箱</td></tr>
+                            <tr><td>第9类（杂项）</td><td>✅ 可拼</td><td>拼箱最友好，限制最少</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="callout info"><strong>📌 通用口诀</strong>1‑2‑5‑7 禁拼，4 类分项看 UN，3‑8‑9 可拼有讲究。</div>
+            </section>
+
+            <!-- Footer -->
+            <div class="footer">
+                ⚠️ 以上为培训参考框架，实际操作以最新版 IMDG Code、船公司实时规定和港口公告为最终准绳。<br>
+                © 2026 危险品国际运输培训 · 内部资料 · 请勿外传
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ── Scripts ──────────────────── -->
+    <script>
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = sidebar.querySelectorAll('a');
+
+            // Mobile menu toggle
+            function openSidebar() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            menuBtn.addEventListener('click', () => {
+                if (sidebar.classList.contains('open')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
+            });
+
+            overlay.addEventListener('click', closeSidebar);
+
+            // Close sidebar on nav click (mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 860) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // Active link highlighting via IntersectionObserver
+            const sections = document.querySelectorAll('.lesson-section[id], .overview-grid[id]');
+            const observerOptions = {
+                root: null,
+                rootMargin: '-100px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+
+            // Also observe overview cards' target sections
+            const lessonSections = document.querySelectorAll('.lesson-section[id]');
+            const lessonObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
+
+            lessonSections.forEach(section => lessonObserver.observe(section));
+
+            // Keyboard accessibility: ESC to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
